@@ -11,6 +11,7 @@ import java.util.Map;
  * Created by wangwei on 2016/9/19.
  */
 @Controller
+@RequestMapping("/jsp")
 public class WelcomeController {
 
     @Value("${application.message:Hello World}")
