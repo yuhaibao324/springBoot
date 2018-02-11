@@ -1,5 +1,109 @@
-spring.aop.auto=true
-spring.aop.proxy-target-class=false
+security:
+  user:
+    password: admin
+    name: admin
 
-security.user.password=wangwei
-security.user.name=wangwei
+# \u9ED8\u8BA4\u7684profile\u4E3Adev\uFF0C\u5176\u4ED6\u73AF\u5883\u901A\u8FC7\u6307\u5B9A\u542F\u52A8\u53C2\u6570\u4F7F\u7528\u4E0D\u540C\u7684profile\uFF0C\u6BD4\u5982\uFF1A
+#   \u6D4B\u8BD5\u73AF\u5883\uFF1Ajava -jar my-spring-boot.jar --spring.profiles.active=test
+#   \u751F\u4EA7\u73AF\u5883\uFF1Ajava -jar my-spring-boot.jar --spring.profiles.active=prod
+spring:
+  profiles:
+    active: dev
+  aop:
+    proxy-target-class：false
+    auto：true
+     
+#  cache:
+#    type: CAFFEINE #\u6307\u5B9Acache\u7C7B\u578B
+#    cache-names:
+#      - getPersonById
+#      - name2
+#    caffeine:
+#      spec: maximumSize=500,expireAfterWrite=5s
+      
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    hikari:
+      maxLifetime: 1765000 #\u4E00\u4E2A\u8FDE\u63A5\u7684\u751F\u547D\u65F6\u957F\uFF08\u6BEB\u79D2\uFF09\uFF0C\u8D85\u65F6\u800C\u4E14\u6CA1\u88AB\u4F7F\u7528\u5219\u88AB\u91CA\u653E\uFF08retired\uFF09\uFF0C\u7F3A\u7701:30\u5206\u949F\uFF0C\u5EFA\u8BAE\u8BBE\u7F6E\u6BD4\u6570\u636E\u5E93\u8D85\u65F6\u65F6\u957F\u5C1130\u79D2\u4EE5\u4E0A
+      maximumPoolSize: 15 #\u8FDE\u63A5\u6C60\u4E2D\u5141\u8BB8\u7684\u6700\u5927\u8FDE\u63A5\u6570\u3002\u7F3A\u7701\u503C\uFF1A10\uFF1B\u63A8\u8350\u7684\u516C\u5F0F\uFF1A((core_count * 2) + effective_spindle_count)
+
+  mail:
+    host: smtp.exmail.qq.com
+    username: service@mail.cn
+    password: myPassword
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+    
+server:
+  port: 8080
+  
+management:
+  port: 54001
+  health:
+    mail:
+      enabled: false
+info:
+  app:
+    name: "@project.name@" #\u4ECEpom.xml\u4E2D\u83B7\u53D6
+    description: "@project.description@"
+    version: "@project.version@"
+    spring-boot-version: "@project.parent.version@"
+      
+---
+# \u5F00\u53D1\u73AF\u5883\u914D\u7F6E
+spring:
+  profiles: dev
+  redis:
+    cluster:
+      nodes:
+        - 192.168.0.17:6390
+        - 192.168.0.17:6391
+        - 192.168.0.17:6392
+        - 192.168.0.9:6390
+        - 192.168.0.9:6391
+        - 192.168.0.9:6392
+  datasource:
+    url: jdbc:mysql://localhost:3306/
+  data:
+    mongodb:
+      uri: mongodb://192.168.0.9:27017/test
+
+myProps: #\u81EA\u5B9A\u4E49\u7684\u5C5E\u6027\u548C\u503C
+  simpleProp: simplePropValue
+  arrayProps: 1,2,3,4,5
+  listProp1:
+    - name: abc
+      value: abcValue
+    - name: efg
+      value: efgValue
+  listProp2:
+    - config2Value1
+    - config2Vavlue2
+  mapProps:
+    key1: value1
+    key2: value2
+  
+---
+# \u6D4B\u8BD5\u73AF\u5883\u914D\u7F6E
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:mysql://192.168.0.12:3306/
+  
+---
+# \u751F\u4EA7\u73AF\u5883\u914D\u7F6E
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://192.168.0.13:3306/
+    
