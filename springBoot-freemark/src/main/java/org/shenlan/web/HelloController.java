@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * Created by wangwei on 2016/9/9.
  */
+@RequestMapping("/freemark")
 @Controller
 public class HelloController {
 
@@ -19,7 +20,8 @@ public class HelloController {
 
     @RequestMapping("/")
     public String index(ModelMap map) {
-        map.addAttribute("host", "freemarker");
+       // map.addAttribute("host", "freemarker");
+        map.addAttribute("host_yu","freemarker-haibao");
         return "index";
     }
 

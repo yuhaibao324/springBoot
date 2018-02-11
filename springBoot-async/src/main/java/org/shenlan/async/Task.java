@@ -4,6 +4,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
 
+
 import java.util.Random;
 import java.util.concurrent.Future;
 
@@ -43,4 +44,19 @@ public class Task {
         System.out.println("完成任务三，耗时：" + (end - start) + "毫秒");
         return new AsyncResult<>("任务三完成");
     }
+    
+    @Async
+    public Future<String> doTaskFour() throws Exception {
+    	System.out.println("开始做任务四");
+    	long start = System.currentTimeMillis();
+    	Thread.sleep(random.nextInt(10000));
+    	long end = System.currentTimeMillis();
+    	System.out.println("完成任务四，耗时: " + (end - start +"毫秒"));
+    	return new AsyncResult<>("任务四完成");
+    }
+    
+    
+    
+   
+    
 }
