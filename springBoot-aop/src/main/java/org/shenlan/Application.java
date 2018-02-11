@@ -7,6 +7,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 /**
  * Created by wangwei on 2016/9/8.
  */
+@SuppressWarnings("unused")
 @SpringBootApplication
 public class Application {
     public static void main(String[] args){
