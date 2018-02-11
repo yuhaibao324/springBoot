@@ -30,8 +30,8 @@ public class ApplicationTests {
     @Test
     public void sendSimpleMail() throws Exception{
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("m15101172298@163.com");
-        message.setTo("373257264@qq.com");
+        message.setFrom("yuhaibao324@126.com");
+        message.setTo("651976093@qq.com");
         message.setSubject("主题：简单邮件");
         message.setText("测试邮件内容");
         mailSender.send(message);
