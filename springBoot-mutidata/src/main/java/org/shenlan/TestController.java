@@ -14,7 +14,7 @@ import java.util.Map;
  * Created by wangwei on 2016/9/6.
  */
 @RestController
-@RequestMapping("/home")
+@RequestMapping("/home/mutidata")
 public class TestController {
     @Autowired
     @Qualifier("primaryJdbcTemplate")
@@ -26,13 +26,13 @@ public class TestController {
 
     @RequestMapping("/test1")
     public String test1(){
-        List<Map<String,Object>> list = jdbcTemplate1.queryForList("select * from user");
+        List<Map<String,Object>> list = jdbcTemplate1.queryForList("select * from users");
         return Arrays.asList(list).toString();
     }
 
     @RequestMapping("/test2")
     public String test2(){
-        List<Map<String,Object>> list = jdbcTemplate2.queryForList("SELECT * from USER");
+        List<Map<String,Object>> list = jdbcTemplate2.queryForList("SELECT * from users");
         return Arrays.asList(list).toString();
     }
 }
