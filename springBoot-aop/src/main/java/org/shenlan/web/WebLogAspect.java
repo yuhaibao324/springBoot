@@ -35,6 +35,7 @@ public class WebLogAspect {
         ServletRequestAttributes attributes = (ServletRequestAttributes)RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         //记录下请求内容
+        logger.info("=========start=======================");
         logger.info("URL:"+request.getRequestURL().toString());
         logger.info("HTTP_METHOD:"+request.getMethod());
         logger.info("IP:"+request.getRemoteAddr());
@@ -48,5 +49,6 @@ public class WebLogAspect {
         logger.info("RESPONSE:"+ret);
         logger.info("SPEND TIME："+(System.currentTimeMillis()-startTime.get()));
         startTime.remove();
+        logger.info("=========end=======================");
     }
 }
