@@ -4,6 +4,7 @@ package org.shenlan.web;
  * Created by wangwei on 2016/9/2.
  */
 public class User {
+	
     private Integer id;
     private String name;
     private Integer age;

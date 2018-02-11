@@ -12,6 +12,7 @@ public interface UserMapper {
             @Result(property = "name",column = "name"),
             @Result(property = "age",column = "age")
     })
-    @Select("select * from user where name = #{name}")
+    @Select("select * from user where name=#{name}")
     User findUserByName(@Param("name")String name);
 }
+

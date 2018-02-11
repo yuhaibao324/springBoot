@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by wangwei on 2016/9/2.
  */
 @RestController
-@RequestMapping({"/home"})
+@RequestMapping("/home")
 public class UserController {
     @Autowired
     UserMapper userMapper;
