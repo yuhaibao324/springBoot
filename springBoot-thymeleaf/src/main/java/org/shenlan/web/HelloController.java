@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by wangwei on 2016/9/9.
  */
 @Controller
+@RequestMapping("/thymeleaf")
 public class HelloController {
     @ResponseBody
     @RequestMapping("/hello")
