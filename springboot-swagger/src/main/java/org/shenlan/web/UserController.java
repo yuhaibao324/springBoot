@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by wangwei on 2016/9/5.
  */
@@ -16,7 +18,7 @@ import java.util.*;
 public class UserController {
 
     static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
-
+    
     @ApiOperation(value="获取用户列表", notes="")
     @RequestMapping(value={""}, method=RequestMethod.GET)
     public List<User> getUserList() {
