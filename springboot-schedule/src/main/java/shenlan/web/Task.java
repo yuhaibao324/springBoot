@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class Task {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Scheduled(cron="*/3 * * * * *")
+    @Scheduled(cron="*/1 * * * * *")
     public void reportCurrentTime(){
         //每三秒打印一行log
         System.out.println("-------------------------------------");
